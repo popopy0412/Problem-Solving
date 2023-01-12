@@ -2,6 +2,29 @@
     "files.associations": {
         "*.cpp": "cpp",
         "iostream": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "bitset": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "string_view": "cpp",
+        "functional": "cpp",
+        "iomanip": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "ostream": "cpp",
+        "ranges": "cpp",
+        "ratio": "cpp",
+        "span": "cpp",
+        "sstream": "cpp",
+        "stop_token": "cpp",
+        "streambuf": "cpp",
+        "syncstream": "cpp",
+        "regex": "cpp",
+        "tuple": "cpp",
+        "chrono": "cpp",
+        "iosfwd": "cpp",
+        "variant": "cpp"
     }
 }
