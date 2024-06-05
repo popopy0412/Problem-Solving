@@ -7,12 +7,12 @@ il=lambda:[[] for _ in range(n)]
 def dfs(now):
     global num,cnt
     s.append(now)
-    ck[now]=parent=num
+    ck[now]=p=num
     num+=1
     for next in v[now]:
-        if ck[next]==0: parent=min(parent,dfs(next))
-        elif fin[next]==0: parent=min(parent,ck[next])
-    if ck[now]==parent:
+        if ck[next]==0: p=min(p,dfs(next))
+        elif fin[next]==0: p=min(p,ck[next])
+    if ck[now]==p:
         while True:
             t=s.pop()
             scc[cnt].append(t)
@@ -20,7 +20,7 @@ def dfs(now):
             if t==now: break
         cnt+=1
     fin[now]=1
-    return parent
+    return p
 for I in range(T:=int(ip())):
     n,m=map(int,ip().split())
     num,cnt=1,0
@@ -34,32 +34,13 @@ for I in range(T:=int(ip())):
     ip()
     for i in range(n):
         if ck[i]==0: dfs(i)
-    for i in range(cnt):
-        t=set()
-        for now in scc[i]:
-            for next in v[now]:
-                if idx[next]!=i:
-                    t.add(idx[next])
-                    ind[idx[next]]+=1
-        nv.append([*t])
+    for i in range(n):
+        for now in v[i]:
+            if idx[now]!=idx[i]:ind[idx[now]]+=1
     t=[]
     for i in range(cnt):
         if ind[i]==0: t.append(i)
-    if len(t)==1:
-        t=t[-1]
-        ans=1
-        ck,q=z(),deque([t])
-        ck[t]=1
-        while q:
-            now=q.popleft()
-            for next in nv[now]:
-                if ck[next]==0:
-                    q.append(next)
-                    ck[next]=1
-                    ans+=1
-        if ans==cnt:
-            for i in sorted(scc[t]): print(i)
-        else: print('Confused')
-    else: print('Confused')
+    if len(t)-1: print('Confused')
+    else:
+        for i in sorted(scc[t[-1]]): print(i)
     if I!=T-1: print()
-    
