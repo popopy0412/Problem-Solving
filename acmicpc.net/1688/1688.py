@@ -19,21 +19,12 @@ def solve(a, b):
         s3=ccw(x-x1,y-y1,x2-x1,y2-y1)
         s4=ccw(a-x1,b-y1,x2-x1,y2-y1)
         if s1*s2>0 or s3*s4>0: continue
-        if y1==y2==b:
-            if min(x1,x2) <= a <= max(x1,x2): cnt=1;break
-            continue
-        if x1==x2==a:
-            if min(y1,y2) <= b <= max(y1,y2): cnt=1;break
-            continue
-        elif s4==0 and min(x1,x2) <= a <= max(x1,x2): cnt=1;break
+        if s4==0 and min(x1,x2) <= a <= max(x1,x2): cnt=1;break
         elif s1*s2==0 and s3*s4==0 and (a<min(x1,x2) or max(x1,x2)<a): continue
-    
         elif s1*s2==0:
             if min(y1,y2)<b: cnt+=1
-            continue
         elif s1*s2<=0 and s3*s4<=0: cnt+=1
     print(cnt%2)
-
 
 for _ in range(3):
     a,b=map(int,ip().split())
